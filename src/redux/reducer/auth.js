@@ -2,7 +2,7 @@
 
 const initialState = {
 	token: 'akak',
-	role: 1
+	role: 0
 };
 
 const authReducer = (state = initialState, action) => {

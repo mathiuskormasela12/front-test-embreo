@@ -1,8 +1,8 @@
 // ========== Auth Reducer
 
 const initialState = {
-	token: null,
-	role: null
+	token: 'akak',
+	role: 1
 };
 
 const authReducer = (state = initialState, action) => {

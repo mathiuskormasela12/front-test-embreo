@@ -18,6 +18,10 @@ import {
 } from '../components';
 
 class Login extends Component {
+	componentDidMount() {
+		document.title = 'Login'
+	}
+
 	render() {
 		return (
 			<Fragment>

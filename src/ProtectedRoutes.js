@@ -14,7 +14,7 @@ function ProtectedRouter(props) {
 		<Fragment>
 			<Route {...props} render={({ location, ...rest }) => {
 				if(auth.token) {
-					if(Number(auth.role) === 1) {
+					if(Number(auth.role) !== 1) {
 						return (
 							<VendorComponent {...rest} />
 						);

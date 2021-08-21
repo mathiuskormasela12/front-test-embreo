@@ -13,9 +13,26 @@ import {
 
 // import all components
 import {
-	HeroDashboard
+	HeroDashboard,
+	ModalDashboard
 } from '../components';
 class CompanyDashboard extends Component {
+	constructor() {
+		super();
+
+		this.state = {
+			show: false
+		}
+
+		this.showModal = this.showModal.bind(this);
+	}
+
+	showModal(show) {
+		this.setState({
+			show
+		})
+	}
+
 	componentDidMount() {
 		document.title = 'Dashboard - Company HR Admin'
 	}
@@ -23,6 +40,7 @@ class CompanyDashboard extends Component {
 	render() {
 		return (
 			<Fragment>
+				<ModalDashboard show={this.state.show} onHide={() => this.showModal(false)} />
 				<HeroDashboard>
 					<Container fluid>
 						<Row className="mb-4 justify-content-center">
@@ -34,7 +52,7 @@ class CompanyDashboard extends Component {
 						</Row>
 						<Row className="justify-content-center">
 							<Col lg={11}>
-								<Table striped bordered hover size="md">
+								<Table striped bordered hover size="md" responsive>
 									<thead>
 										<tr>
 											<th>Event Name</th>
@@ -53,7 +71,7 @@ class CompanyDashboard extends Component {
 											<td>Approve</td>
 											<td>10 June 2020</td>
 											<td>
-												<Button variant="outline-primary" className="px-3">View</Button>
+												<Button variant="outline-primary" className="px-3" onClick={() => this.showModal(true)}>View</Button>
 											</td>
 										</tr>
 									</tbody>

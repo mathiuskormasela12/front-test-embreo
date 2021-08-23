@@ -3,18 +3,18 @@
 import React, { Fragment } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import decode from 'jwt-decode';
 
 function ProtectedRouter(props) {
 	const CompanyComponent = props.companyComponent;
 	const VendorComponent = props.vendorComponent;
 	const auth = useSelector(currentState => currentState.auth);
-	console.log(auth)
 
 	return (
 		<Fragment>
 			<Route {...props} render={({ location, ...rest }) => {
 				if(auth.token) {
-					if(Number(auth.role) !== 1) {
+					if(Number(decode(auth.token).role) !== 1) {
 						return (
 							<VendorComponent {...rest} />
 						);

@@ -11,7 +11,6 @@ etc) and the vendor approval or rejection of said events.
 ## Preview Project
 
 ### Vendor Admin Dashboard
-<<<<<<< HEAD
 ![alt text](https://github.com/mathiuskormasela12/front-test-embreo/blob/release/screenshoot/Dashboard_Vendor.png?raw=true)
 
 ### Vendor Admin Dashboard (Popup)
@@ -25,18 +24,3 @@ etc) and the vendor approval or rejection of said events.
 
 ### HR Admin Dashboard (Popup)
 ![alt text](https://github.com/mathiuskormasela12/front-test-embreo/blob/release/screenshoot/Dashboard_HR_Modal.png?raw=true)
-=======
-![alt text](https://github.com/mathiuskormasela12/front-test-embreo/blob/staging/screenshoot/Dashboard_Vendor.png?raw=true)
-
-### Vendor Admin Dashboard (Popup)
-![alt text](https://github.com/mathiuskormasela12/front-test-embreo/blob/staging/screenshoot/Dashboard_Vendor_Modal.png?raw=true)
-
-### Login
-![alt text](https://github.com/mathiuskormasela12/front-test-embreo/blob/staging/screenshoot/login.png?raw=true)
-
-### HR Admin Dashboard
-![alt text](https://github.com/mathiuskormasela12/front-test-embreo/blob/staging/screenshoot/Dashboard_HR.png?raw=true)
-
-### HR Admin Dashboard (Popup)
-![alt text](https://github.com/mathiuskormasela12/front-test-embreo/blob/staging/screenshoot/Dashboard_HR_Modal.png?raw=true)
->>>>>>> main

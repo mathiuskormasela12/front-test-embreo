@@ -61,11 +61,19 @@ class Login extends Component {
 				this.props.history.push('/')
 			}, 1000)
 		} catch (err) {
-			return Swal.fire({
-				title: 'Error',
-				text: err.response.data.message,
-				icon: 'error'
-			})
+			if(err.response) {
+				return Swal.fire({
+					title: 'Error',
+					text: err.response.data.message,
+					icon: 'error'
+				})
+			} else {
+				return Swal.fire({
+					title: 'Error',
+					text: err.message,
+					icon: 'error'
+				})
+			}
 		}
 	}
 

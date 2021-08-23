@@ -56,7 +56,7 @@ class VendorDashboard extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log(this.state.selectedDate)
+		
 		if(this.state.refresh !== prevState.refresh) {
 			this.getAllEvents()
 		}
@@ -78,11 +78,19 @@ class VendorDashboard extends Component {
 				refresh: !currentState.refresh
 			}))
 		} catch (err) {
-			Swal.fire({
-				title: 'Error',
-				text: err.response.data.message,
-				icon: 'error'
-			})
+			if(err.response) {
+				Swal.fire({
+					title: 'Error',
+					text: err.response.data.message,
+					icon: 'error'
+				})
+			} else {
+				Swal.fire({
+					title: 'Error',
+					text: err.message,
+					icon: 'error'
+				})
+			}
 		}
 	}
 
@@ -102,11 +110,19 @@ class VendorDashboard extends Component {
 				refresh: !currentState.refresh
 			}))
 		} catch (err) {
-			Swal.fire({
-				title: 'Error',
-				text: err.response.data.message,
-				icon: 'error'
-			})
+			if(err.response) {
+				Swal.fire({
+					title: 'Error',
+					text: err.response.data.message,
+					icon: 'error'
+				})
+			} else {
+				Swal.fire({
+					title: 'Error',
+					text: err.message,
+					icon: 'error'
+				})
+			}
 		}
 	}
 
@@ -116,18 +132,26 @@ class VendorDashboard extends Component {
 		}))
 		try {
 			const { data } = await events.getAllEvents(this.props.auth.token)
-			console.log(data.results)
+			
 			this.setState((currentState) => ({
 				events: data.results,
 				message: null,
 				loading: !currentState.loading
 			}))
 		} catch (err) {
-			this.setState(currentState => ({
-				loading: !currentState.loading,
-				events: [],
-				message: err.response.data.message
-			}))
+			if(err.response) {
+				this.setState(currentState => ({
+					loading: !currentState.loading,
+					events: [],
+					message: err.response.data.message
+				}))
+			} else {
+				this.setState(currentState => ({
+					loading: !currentState.loading,
+					events: [],
+					message: err.message
+				}))
+			}
 		}
 	}
 
@@ -145,11 +169,19 @@ class VendorDashboard extends Component {
 			})
 			this.showModal(true)
 		} catch (err) {
-			Swal.fire({
-				title: 'Error',
-				text: err.response.data.message,
-				icon: 'error'
-			})
+			if(err.response) {
+				Swal.fire({
+					title: 'Error',
+					text: err.response.data.message,
+					icon: 'error'
+				})
+			} else {
+				Swal.fire({
+					title: 'Error',
+					text: err.message,
+					icon: 'error'
+				})
+			}
 		}
 	}
 

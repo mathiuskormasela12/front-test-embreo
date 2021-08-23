@@ -1,8 +1,7 @@
 // ========== Auth Reducer
 
 const initialState = {
-	token: 'akak',
-	role: null
+	token: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -10,8 +9,14 @@ const authReducer = (state = initialState, action) => {
 		case 'LOGIN': {
 			return {
 				...state,
-				token: action.payload.token,
-				role: action.payload.role
+				token: action.payload.token
+			}
+		}
+
+		case 'LOGOUT': {
+			return {
+				...state,
+				token: null
 			}
 		}
 

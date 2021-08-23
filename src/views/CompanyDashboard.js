@@ -1,6 +1,11 @@
 // ========== Company Dashboard
 // import all modules
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import Swal from 'sweetalert2';
+
+// import all actions
+import { logout } from '../redux/action/auth';
 
 // import all react boostrap components
 import {
@@ -24,7 +29,33 @@ class CompanyDashboard extends Component {
 			show: false
 		}
 
+		this.logout = this.logout.bind(this);
 		this.showModal = this.showModal.bind(this);
+	}
+
+	logout() {
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "You have to login again for use thia app",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, Logout!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.props.logout()
+				Swal.fire(
+					'Success',
+					'Logout successfully',
+					'success'
+				)
+
+				setTimeout(() => {
+					this.props.history.push('/login')
+				})
+			}
+		})
 	}
 
 	showModal(show) {
@@ -80,7 +111,7 @@ class CompanyDashboard extends Component {
 						</Row>
 						<Row className="justify-content-center mt-3">
 							<Col lg={11}>
-								<Button variant="danger">Logout</Button>
+								<Button variant="danger" onClick={this.logout}>Logout</Button>
 							</Col>
 						</Row>
 					</Container>
@@ -90,4 +121,8 @@ class CompanyDashboard extends Component {
 	}
 }
 
-export default CompanyDashboard;
+const mapDispatchToProps = {
+	logout
+}
+
+export default connect(null, mapDispatchToProps)(CompanyDashboard);

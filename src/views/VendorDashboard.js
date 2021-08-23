@@ -1,6 +1,11 @@
 // ========== Vendor Dashboard
 // import all modules
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import Swal from 'sweetalert2';
+
+// import all actions
+import { logout } from '../redux/action/auth';
 
 // import all react boostrap components
 import {
@@ -31,6 +36,7 @@ class VendorDashboard extends Component {
 
 		this.showModal = this.showModal.bind(this);
 		this.handleAction = this.handleAction.bind(this);
+		this.logout = this.logout.bind(this);
 	}
 
 	componentDidMount() {
@@ -53,6 +59,31 @@ class VendorDashboard extends Component {
 		this.setState(currentState => ({
 			[prop]: e.target.value
 		}))
+	}
+
+	logout() {
+		Swal.fire({
+			title: 'Are you sure?',
+			text: "You have to login again for use thia app",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, Logout!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.props.logout()
+				Swal.fire(
+					'Success',
+					'Logout successfully',
+					'success'
+				)
+
+				setTimeout(() => {
+					this.props.history.push('/login')
+				})
+			}
+		})
 	}
 
 	render() {
@@ -163,7 +194,7 @@ class VendorDashboard extends Component {
 						</Row>
 						<Row className="justify-content-center mt-3">
 							<Col lg={11}>
-								<Button variant="danger">Logout</Button>
+								<Button variant="danger" onClick={this.logout}>Logout</Button>
 							</Col>
 						</Row>
 					</Container>
@@ -173,4 +204,8 @@ class VendorDashboard extends Component {
 	}
 }
 
-export default VendorDashboard;
+const mapDispatchToProps = {
+	logout
+}
+
+export default connect(null, mapDispatchToProps)(VendorDashboard);
